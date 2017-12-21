@@ -19,15 +19,28 @@ import java.util.ArrayList;
 import static util.Saps.TEAM_NAME;
 
 /**
- * Created by: Tomas on 2017/10/03.
+ * This class is worked as utilize which can be accessed by other package
+ * @author Tomas 
+ * @since 2017/10/03
  */
 public enum HttpUtil {
     INSTANCE;
-
+/**
+ * urlBase is the URL of access to server
+ * airplanes,airport is all the airplane in the database
+ * 
+ */
     private static String urlBase = "http://cs509.cs.wpi.edu:8181/CS509.server/ReservationSystem";
     public static ArrayList<Airplane> airplanes = HttpUtil.INSTANCE.getAirplanes();
     public static ArrayList<Airport> airports = HttpUtil.INSTANCE.getAirports();
-
+/**
+ * 
+ * @param flightNumbers  flightNumbers is a specific number of flight object we defined in the
+ * beans' Flight which can used to reserve the specific trip
+ * @param seatTypes  seatTypes  is the user's seat preference coach or first class.
+ * @return   true is reserve is successfully done.
+ * 
+ */
     public boolean reserveSeats(ArrayList<String> flightNumbers, ArrayList<String> seatTypes) {
         URL url;
         HttpURLConnection connection;
@@ -72,12 +85,13 @@ public enum HttpUtil {
         }
         return true;
     }
-
     /**
-     * @param date the departure date
-     * @param code the code of the airport
-     * @return ArrayList<Flight> that contains departure flights
-     */
+   * @param isDeparture parameter to determine if is a departure
+   * @param date the departure date
+   * @param code the code of the airport
+   * @return flights that contains departure flights
+   * @throws ParseException throw exception if parse failed
+   */
     public ArrayList<Flight> getFlights(boolean isDeparture, String date, String code) throws ParseException {
 
         URL url;

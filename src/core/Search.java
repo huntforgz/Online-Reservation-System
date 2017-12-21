@@ -19,6 +19,9 @@ import java.util.TimeZone;
  * The result is an arraylist of trips which is sorted by price.
  */
 public class Search {
+	/**
+	 *Attributes describing a flight search
+	 */
     private String depAirportCode;
     private String arrAirportCode;
     private String depDate;
@@ -92,7 +95,15 @@ public class Search {
         Sort.sortPrice(true, trips);
         return trips;
     }
-
+    /**
+	 * This method uses the use parameters to search for valid flights 
+	 * @param index number of stop
+	 * @param previousFlights previousFlights
+	 * @param departureCode  departureCode
+	 * @param departureDate departureDate
+	 * @return an arrayList of the type {@link beans.Trip}
+	 * @throws ParseException is thrown if the date is not parsed
+	 */
     private void tripSearch(int index, ArrayList<Flight> previousFlights, String departureCode, String departureDate) throws ParseException {
 
         if (index > 2) {
@@ -194,7 +205,11 @@ public class Search {
         temp.setTime(date.parse(this.getDepDate()).getTime() + 24 * 60 * 60 * 1000);
         return date.format(temp);
     }
-
+/**
+ * 
+ * @param code code of an airport
+ * @return tz of airport
+ */
     private TimeZone findTz(String code) {
         TimeZone tz = TimeZone.getDefault();
         for (Airport airport : HttpUtil.airports) {

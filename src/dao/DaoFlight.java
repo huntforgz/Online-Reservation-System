@@ -15,11 +15,20 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.text.ParseException;
 import java.util.ArrayList;
-
 /**
- * Created by: Tomas on 2017/11/03.
+ * @author Tomas 
+ * @version 2.0
+ * @since 2017/11/03
  */
 public class DaoFlight {
+	/**
+	 * Add all the flights contained in the XML string to the aggregate of Flights
+	 * 
+	 * @param xmlFlights is an XML string identifying zero or more flights
+	 * @return list of flights if the flights are successfully added
+	 * @throws NullPointerException included to keep signature consistent with other addAll methods
+	 * @throws ParseException throw exception if parse failed
+	 */
     public static ArrayList<Flight> addAll (String xmlFlights) throws NullPointerException, ParseException {
         ArrayList<Flight> flights = new ArrayList<>();
 
@@ -40,7 +49,14 @@ public class DaoFlight {
 
         return flights;
     }
-
+    /**
+	 * Creates a FLight object form a DOM node
+	 * 
+	 * Processes a DOM Node that describes a Flight and creates a Flight object from the information
+	 * @param nodeFlight is a DOM Node describing an Airport
+	 * @return Flight object created from the DOM Node representation of the Flight
+	 * 
+	 */
     static private Flight buildFlight(Node nodeFlight) throws ParseException {
         Flight flight = new Flight();
 

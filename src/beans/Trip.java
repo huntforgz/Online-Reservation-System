@@ -19,30 +19,46 @@ import static util.Saps.ONE_MINUTE_IN_MILLIS;
 import static util.Saps.STOPOVER_IN_MINUTE;
 
 /**
- * Created by: Tomas on 2017/11/09.
- * An entity that represents a list of flights so connecting flights can be included in one single arraylist.
- * Besides, public methods such as calculating the total flight time, the departure and arrival time in local timezone and give minimal price available
- * are included. The front end can easily call such methods to implement displaying, sorting or filtering.
- * tripID: Unique identifier of the trip
- * flights: The flight entities in a trip. Max 3, minimal 1.
- *
+ * This class is an amalgamation class of all Flights needed to create a potential
+ * travel option that gets a user to their destination. It provides the superset
+ * class functionality to get key details about all the individual flights.
+ * 
+ * @author Tomas
+ * @version 2.0
+ * @since 2017/11/096
  */
+ 
 public class Trip {
+	/**
+	 *Attributes for a Trip
+	 */
     private long tripID;
     private ArrayList<Flight> flights;
-
+/**
+ * 
+ * @return   return tripID
+ */
     public long getTripID() {
         return tripID;
     }
-
+/**
+ * 
+ * @param tripID  tripID  to set
+ */
     public void setTripID(long tripID) {
         this.tripID = tripID;
     }
-
+/**
+ * 
+ * @return return flights
+ */
     public ArrayList<Flight> getFlights() {
         return flights;
     }
-
+/**
+ * 
+ * @param flights flights to be set
+ */
     public void setFlights(ArrayList<Flight> flights) {
         this.flights = flights;
     }
@@ -75,7 +91,10 @@ public class Trip {
         return true;
     }
 
-
+    /**
+	 * get price of the trip
+	 * @return the total price of all individual flights combined
+	 */
     public double getTotalPrice() {
         double totalPrice = 0.0;
         for (Flight flight : this.flights) {
@@ -145,7 +164,11 @@ public class Trip {
         }
         return 0;
     }
-
+    /**
+	 * get total travel time of the trip
+	 * 
+	 * @return the total travel time from start to finish in hours:minutes format
+	 */
     public String getTotalTime() {
 
         DateTimeFormatter flightDateFormat = DateTimeFormatter.ofPattern("yyyy MMM d HH:mm z", Locale.ENGLISH);

@@ -7,7 +7,7 @@ import beans.Trip;
 import java.util.ArrayList;
 
 /**
- * Created by: Tomas on 2017/12/03.
+ * @author Tomas on 2017/12/03.
  * This is to mock a trip list to test the front end UI
  */
 public enum MockResult {

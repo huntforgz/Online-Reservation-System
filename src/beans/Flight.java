@@ -10,17 +10,18 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /**
- * Created by: Tomas on 2017/10/03.
+ * This class stores values information to a single flight from one airport to another. 
+ * Attributes are accessed via get and set methods.
+ *  
+ * @author Tomas
+ * @version 2.0
+ * @since 2017-09-20
  *
- * airplane: The model name of the plane, and max seats of each type of seat
- * flightTime: The flight time in minutes
- * dep/arrAirportCode: The unique code for departure and arrival airports
- * dep/arrTime: The time string of departure and arrival, "YYYY MMM DD HH:MM"
- * first/coachClassPrice: The price of 2 types of seats
- * first/coachClassBooked: The booked seats of 2 types of seats
  */
 public class Flight {
-
+	/**
+	 * Attributes describing a flight
+	 */
     private Airplane airplane;
     private int flightTime;
     private String flightNumber;
@@ -48,7 +49,11 @@ public class Flight {
         firstClassBooked = 0;
         coachClassBooked = 0;
     }
-
+    /**
+	 * Determine if a Flight is reasonably valid
+	 * 
+	 * @return true if the Flight instance is reasonable valid
+	 */
     public boolean isValid() {
         return flightTime >= 0 && !firstClassPrice.equals("") && !coachClassPrice.equals("") && !flightNumber.equals("");
     }
@@ -75,27 +80,37 @@ public class Flight {
                 + " " + arrTime + " " + firstClassBooked + " " + firstClassPrice + " " + coachClassBooked
                 + " " + coachClassPrice;
     }
-
+    /**
+	 * @return the flightNumber
+	 */
     public String getFlightNumber() {
         return flightNumber;
     }
-
+    /**
+	 * @param flightNumber the flightNumbe to set
+	 */
     public void setFlightNumber(String flightNumber) {
         this.flightNumber = flightNumber;
     }
-
+    /**
+   	 * @return the airplane
+   	 */
     public Airplane getAirplane() {
         return airplane;
     }
-
+    /**
+	 * @param airplane the airplane to set
+	 */
     public void setAirplane(Airplane airplane) {
         this.airplane = airplane;
     }
-
+    /**
+   	 * @return the flightTime
+   	 */
     public int getFlightTime() {
         return flightTime;
     }
-
+    
     public String getLocalDepTime() {
         return localDepTime;
     }
@@ -103,71 +118,105 @@ public class Flight {
     public String getLocalArrTime() {
         return localArrTime;
     }
-
+    /**
+	 * @param flightTime the flightTime to set
+	 */
     public void setFlightTime(int flightTime) {
         this.flightTime = flightTime;
     }
-
+    /**
+   	 * @return the depAirportCode
+   	 */
     public String getDepAirportCode() {
         return depAirportCode;
     }
-
+    /**
+   	 * @param depAirportCode the depAirportCode to set
+   	 */
     public void setDepAirportCode(String depAirportCode) {
         this.depAirportCode = depAirportCode;
     }
-
+    /**
+   	 * @return the depTime
+   	 */
     public String getDepTime() {
         return depTime;
     }
-
+    /**
+   	 * @param depTime the depTime to set
+   	 */
     public void setDepTime(String depTime) {
         this.depTime = depTime;
     }
-
+    /**
+   	 * @return the arrAirportCode
+   	 */
     public String getArrAirportCode() {
         return arrAirportCode;
     }
-
+    /**
+   	 * @param arrAirportCode the arrAirportCode to set
+   	 */
     public void setArrAirportCode(String arrAirportCode) {
         this.arrAirportCode = arrAirportCode;
     }
-
+    /**
+   	 * @return the arrTime
+   	 */
     public String getArrTime() {
         return arrTime;
     }
-
+    /**
+   	 * @param arrTime the arrTime to set
+   	 */
     public void setArrTime(String arrTime) {
         this.arrTime = arrTime;
     }
-
+    /**
+   	 * @return the firstClassPrice
+   	 */
     public String getFirstClassPrice() {
         return firstClassPrice;
     }
-
+    /**
+   	 * @param firstClassPrice the firstClassPrice to set
+   	 */
     public void setFirstClassPrice(String firstClassPrice) {
         this.firstClassPrice = firstClassPrice;
     }
-
+    /**
+   	 * @return the coachClassPrice
+   	 */
     public String getCoachClassPrice() {
         return coachClassPrice;
     }
-
+    /**
+   	 * @param coachClassPrice the coachClassPrice to set
+   	 */
     public void setCoachClassPrice(String coachClassPrice) {
         this.coachClassPrice = coachClassPrice;
     }
-
+    /**
+   	 * @return the firstClassBooked;
+   	 */
     public int getFirstClassBooked() {
         return firstClassBooked;
     }
-
+    /**
+   	 * @param firstClassBooked the firstClassBooke to set
+   	 */
     public void setFirstClassBooked(int firstClassBooked) {
         this.firstClassBooked = firstClassBooked;
     }
-
+    /**
+   	 * @return the coachClassBooked;
+   	 */
     public int getCoachClassBooked() {
         return coachClassBooked;
     }
-
+    /**
+   	 * @param coachClassBooked the irstClassBooked to set
+   	 */
     public void setCoachClassBooked(int coachClassBooked) {
         this.coachClassBooked = coachClassBooked;
     }
@@ -214,7 +263,10 @@ public class Flight {
         int curFirst = getFirstClassBooked();
         return (maxFirst - curFirst) > 0;
     }
-
+    /**
+     * @param code airport code to return it's timezone
+   	 * @return the timezone;
+   	 */
     private TimeZone findTz(String code) {
         TimeZone tz = TimeZone.getDefault();
         for (Airport airport : HttpUtil.airports) {

@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import static util.Saps.TEAM_NAME;
 
 /**
- * Created by: Tomas on 2017/11/01.
+ * @author Tomas 
+ * @since 2017/11/01
+ * @version 2.0
  */
-class QueryFactory {
+public class QueryFactory {
     /**
      * Return a query string that can be passed to HTTP URL to request list of airports
      *
@@ -66,7 +68,13 @@ class QueryFactory {
     static String getAirplanes() {
         return "?team=" + TEAM_NAME + "&action=list&list_type=airplanes";
     }
-
+/**
+ * 
+ * @param flightNumbers flightNumbers is a specific number of flight object we defined in the
+ * beans' Flight which can used to reserve the specific trip
+ * @param seatTypes eatTypes  is the user's seat preference coach or first class.
+ * @return booked flights
+ */
     static String reserveSeats(ArrayList<String> flightNumbers, ArrayList<String> seatTypes) {
         StringBuilder result = new StringBuilder();
         result.append("team=" + TEAM_NAME + "&action=buyTickets&flightData=<Flights>");

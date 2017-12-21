@@ -28,32 +28,38 @@ public class Main {
         Sort.sortDepTime(true,result);
         displayTrips(result);
     }
+/**
+ * This method is used to determine whether the 
+ * @param airports
+ * @param codeString
+ * @return
+ */
+//    private static boolean isValidCode(ArrayList<Airport> airports, String codeString) {
+//        if(codeString.matches("[A-Z]{3}")) {
+//            for (Airport airport : airports) {
+//                if (codeString.equals(airport.getCode()))
+//                    return true;
+//            }
+//        }
+//        return false;
+//    }
 
-    private static boolean isValidCode(ArrayList<Airport> airports, String codeString) {
-        if(codeString.matches("[A-Z]{3}")) {
-            for (Airport airport : airports) {
-                if (codeString.equals(airport.getCode()))
-                    return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean isValidDate(String dateString) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy MMM dd hh:mm z", Locale.ENGLISH);
-        try {
-            format.parse(dateString);
-        } catch (ParseException e) {
-            System.out.println("The date is not valid, please input again.");
-            return false;
-        }
-        return true;
-    }
+//    private static boolean isValidDate(String dateString) {
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy MMM dd hh:mm z", Locale.ENGLISH);
+//        try {
+//            format.parse(dateString);
+//        } catch (ParseException e) {
+//            System.out.println("The date is not valid, please input again.");
+//            return false;
+//        }
+//        return true;
+//    }
 
     /**
      * Displays the flights in console, for demo purposes
      * @param flights A collection of Flight, coming from HttpUtil.getFlights()
      */
+   
     private static void displayFlights(ArrayList<Flight> flights) {
         System.out.println("\nThe List of Flights\nFlightNumber\tDeparture\tDepartureTime\t\t\t\tArrival\tArrivalTime\t\t\t\t\t" +
                 "EC-Max\tFC-Price\t\t\tEC-Booked\tEC-Price\t\t" +
@@ -66,6 +72,10 @@ public class Main {
                     +"\t\t\t"+flight.getCoachClassPrice()+"\t\t\t"+flight.getFlightTime());
         }
     }
+    /**
+     * This method is used to dislay resulted trips
+     * @param trips trips that needed to be display
+     */
     private static void displayTrips(ArrayList<Trip> trips) {
         System.out.println("\nThe List of Trips\nTripID\t");
         for (Trip trip : trips) {

@@ -14,9 +14,23 @@ import java.io.StringReader;
 import java.util.ArrayList;
 
 /**
- * Created by: Tomas on 2017/11/03.
+ * @author Tomas 
+ * @version 2.0
+ * @since 2017/11/03
  */
 public class DaoAirplane {
+	/**
+	 *  Builds collection of airplanes from airplanes described in XML
+	 * 
+	 * Parses an XML string to read each of the airplanes and adds each valid airplane 
+	 * to the collection. The method uses Java DOM (Document Object Model) to convert
+	 * from XML to Java primitives.
+	 * 
+	 * @param xmlAirplanes XML string containing set of airplanes 
+	 * @return list of Airplane if the collection was modified, false otherwise
+	 * @throws NullPointerException included to keep signature consistent with other addAll methods
+	 * 
+	 */
     public static ArrayList<Airplane> addAll (String xmlAirplanes) throws NullPointerException {
         ArrayList<Airplane> airplanes = new ArrayList<>();
 
@@ -35,7 +49,14 @@ public class DaoAirplane {
 
         return airplanes;
     }
-
+    /**
+	 * Creates an Airplane object form a DOM node
+	 * 
+	 * Processes a DOM Node that describes an Airplane and creates an Airplane object from the information
+	 * @param nodeAirplane is a DOM Node describing an Airplane
+	 * @return Airplane object created from the DOM Node representation of the Airplane
+	 * 
+	 */
     static private Airplane buildAirplane(Node nodeAirplane) {
         Airplane airplane = new Airplane();
 

@@ -14,7 +14,12 @@ import java.util.TimeZone;
  * Its functionalities are implemented in front end
  */
 public class Filter {
-
+/**
+ * This method used to filter the search result over numbers of stop
+ * @param trips previous search result of trips
+ * @param stop numbers of stops
+ * @return the filtered flights
+ */
     public static ArrayList<Trip> StopFilter(ArrayList<Trip> trips, int stop) {
         ArrayList<Trip> filterTrip = new ArrayList<Trip>();
         for (Trip trip : trips) {
@@ -46,17 +51,6 @@ public class Filter {
 
 
     }
-//	public static long getDepTime(Trip trip) throws ParseException{
-//		SimpleDateFormat time = new SimpleDateFormat("yyyy MMM dd HH:mm z");
-//
-//		return time.parse(trip.getFlight(0).getDepTime()).getTime();
-//	}
-//
-//	public static long getArrTime(Trip trip)throws ParseException {
-//		SimpleDateFormat time = new SimpleDateFormat("yyyy MMM dd HH:mm z");
-//		int flightnum = trip.getFlights().size();
-//		return time.parse(trip.getFlight(flightnum-1).getArrTime()).getTime();
-//	}
 
     public static String check_TimeArea(int hour) {
         if (hour < 11) {
@@ -69,7 +63,13 @@ public class Filter {
             return "Evening";
         }
     }
-
+/**
+ * This method used to filter the search result over departure time 
+ * @param trips previous search result of trips
+ * @param deptime departure time 
+ * @return filtered trips
+ * @throws ParseException throw exception if parse failed
+ */
     public static ArrayList<Trip> depTimeFilter(ArrayList<Trip> trips, String deptime) throws ParseException {
 
         ArrayList<Trip> filterTrip = new ArrayList<Trip>();
@@ -82,7 +82,13 @@ public class Filter {
         return filterTrip;
 
     }
-
+    /**
+     * This method used to filter the search result over arrival  time 
+     * @param trips previous search result of trips
+     * @param arrtime arrival time 
+     * @return filtered trips
+     * @throws ParseException throw exception if parse failed
+     */
     public static ArrayList<Trip> arrTimeFilter(ArrayList<Trip> trips, String arrtime) throws ParseException {
 
         ArrayList<Trip> filterTrip = new ArrayList<Trip>();

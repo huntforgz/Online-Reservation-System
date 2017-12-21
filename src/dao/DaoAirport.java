@@ -14,9 +14,24 @@ import java.io.StringReader;
 import java.util.ArrayList;
 
 /**
- * Created by: Tomas on 2017/11/01.
+ * @author Tomas 
+ * @version 2.0
+ * @since 2017/11/03
  */
 public class DaoAirport {
+	/**
+	 * Builds collection of airports from airports described in XML
+	 * 
+	 * Parses an XML string to read each of the airports and adds each valid airport 
+	 * to the collection. The method uses Java DOM (Document Object Model) to convert
+	 * from XML to Java primitives.
+	 * 
+	 * @param xmlAirports XML string containing set of airports 
+	 * @return true if the collection was modified, false otherwise
+	 * @throws NullPointerException included to keep signature consistent with other addAll methods
+	 * 
+	 */
+	
     public static ArrayList<Airport> addAll (String xmlAirports) throws NullPointerException {
         ArrayList<Airport> airports = new ArrayList<>();
 
@@ -35,7 +50,14 @@ public class DaoAirport {
 
         return airports;
     }
-
+    /**
+	 * Creates an Airport object form a DOM node
+	 * 
+	 * Processes a DOM Node that describes an Airport and creates an Airport object from the information
+	 * @param nodeAirport is a DOM Node describing an Airport
+	 * @return Airport objects created from the DOM Node representation of the Airport
+	 * 
+	 */
     static private Airport buildAirport (Node nodeAirport) {
         Airport airport = new Airport();
 
